@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loan Approval Check</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="layout">
+
+  <aside class="intro">
+    <h1>Find out if your loan is likely to be approved.</h1>
+    <p class="lead">Answer 11 quick questions. Our model compares your details with past applications and gives you a result in seconds.</p>
+    <ul class="facts">
+      <li><strong>Takes about a minute.</strong> No sign-up needed.</li>
+      <li><strong>Nothing is stored.</strong> Your answers are only used to make this prediction.</li>
+      <li><strong>It's an estimate.</strong> A bank makes the final decision.</li>
+    </ul>
+  </aside>
+
+  <section class="panel">
+    <form id="loanForm" novalidate>
+
+      <fieldset>
+        <legend>About you</legend>
+        <div class="grid">
+          <div class="field">
+            <span class="label">Gender</span>
+            <div class="seg">
+              <input type="radio" id="g1" name="Gender" value="1" checked><label for="g1">Male</label>
+              <input type="radio" id="g0" name="Gender" value="0"><label for="g0">Female</label>
+            </div>
+          </div>
+          <div class="field">
+            <span class="label">Married</span>
+            <div class="seg">
+              <input type="radio" id="m1" name="Married" value="1" checked><label for="m1">Yes</label>
+              <input type="radio" id="m0" name="Married" value="0"><label for="m0">No</label>
+            </div>
+          </div>
+          <div class="field">
+            <span class="label">Education</span>
+            <div class="seg">
+              <input type="radio" id="e1" name="Education" value="1" checked><label for="e1">Graduate</label>
+              <input type="radio" id="e0" name="Education" value="0"><label for="e0">Not graduate</label>
+            </div>
+          </div>
+          <div class="field">
+            <span class="label">Self-employed</span>
+            <div class="seg">
+              <input type="radio" id="s1" name="Self_Employed" value="1"><label for="s1">Yes</label>
+              <input type="radio" id="s0" name="Self_Employed" value="0" checked><label for="s0">No</label>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label" for="Dependents">Dependents</label>
+            <select id="Dependents" name="Dependents">
+              <option value="0">0</option><option value="1">1</option>
+              <option value="2">2</option><option value="3">3 or more</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="label" for="Property_Area">Property area</label>
+            <select id="Property_Area" name="Property_Area">
+              <option value="2">Urban</option>
+              <option value="1">Semi-urban</option>
+              <option value="0">Rural</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Income and loan</legend>
+        <div class="grid">
+          <div class="field">
+            <label class="label" for="ApplicantIncome">Your monthly income</label>
+            <input type="number" id="ApplicantIncome" name="ApplicantIncome" min="0" step="any" placeholder="e.g. 5000" required>
+          </div>
+          <div class="field">
+            <label class="label" for="CoapplicantIncome">Co-applicant's monthly income</label>
+            <input type="number" id="CoapplicantIncome" name="CoapplicantIncome" min="0" step="any" value="0" required>
+          </div>
+          <div class="field">
+            <label class="label" for="LoanAmount">Loan amount</label>
+            <input type="number" id="LoanAmount" name="LoanAmount" min="0" step="any" placeholder="e.g. 150" required>
+          </div>
+          <div class="field">
+            <label class="label" for="Loan_Amount_Term">Loan term (months)</label>
+            <input type="number" id="Loan_Amount_Term" name="Loan_Amount_Term" min="1" step="any" value="360" required>
+          </div>
+          <div class="field wide">
+            <span class="label">Credit history</span>
+            <div class="seg">
+              <input type="radio" id="c1" name="Credit_History" value="1" checked><label for="c1">Meets lender guidelines</label>
+              <input type="radio" id="c0" name="Credit_History" value="0"><label for="c0">Does not meet guidelines</label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <p id="error" class="error" role="alert" hidden></p>
+      <button type="submit" id="submitBtn"><span class="btn-text">Check my loan</span><span class="spinner" aria-hidden="true"></span></button>
+    </form>
+
+    <div id="result" class="result" hidden tabindex="-1" aria-live="polite">
+      <div class="stamp" id="stamp"></div>
+      <h2 id="resultTitle"></h2>
+      <p id="resultText"></p>
+      <button type="button" id="resetBtn" class="ghost">Check another loan</button>
+    </div>
+  </section>
+
+</main>
+<script src="script.js"></script>
+</body>
+</html>
